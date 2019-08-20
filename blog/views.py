@@ -23,12 +23,12 @@ def translate_RELEVANCE_CHOICES(Object):
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    posts = translate_RELEVANCE_CHOICES(posts)
+    #posts = translate_RELEVANCE_CHOICES(posts)
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post = translate_RELEVANCE_CHOICES(post)
+    #post = translate_RELEVANCE_CHOICES(post)
     return render(request, 'blog/post_detail.html', {'post': post})
 
 def post_new(request):
@@ -38,7 +38,7 @@ def post_new(request):
             post = form.save(commit=False)
             post.author = request.user
             post.published_date = timezone.now()
-            post.relevance = request.relevance
+            #post.relevance = request.relevance
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
@@ -53,7 +53,7 @@ def post_edit(request, pk):
             post = form.save(commit=False)
             post.author = request.user
             post.published_date = timezone.now()
-            post.relevance = request.relevance
+            #post.relevance = request.relevance
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:

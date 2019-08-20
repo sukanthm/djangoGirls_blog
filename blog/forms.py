@@ -7,5 +7,5 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title', 'text', 'relevance',)
+        fields = ('title', 'text',)#, 'relevance',)
         #relevance = forms.ChoiceField(choices = RELEVANCE_CHOICES, required=True)
